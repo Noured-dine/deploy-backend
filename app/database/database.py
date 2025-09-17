@@ -18,11 +18,13 @@ SQLALCHEMY_DATABASE_POSTGRE_SQL_URL = (
     else None
 )
 
-postgresqlEngine = create_engine(SQLALCHEMY_DATABASE_POSTGRE_SQL_URL)
-
-sqliteEngine = create_engine(SQLALCHEMY_DATABASE_SQL_LITE_URL,connect_args={"check_same_thread": False})
-
-engine = postgresqlEngine
+if SQLALCHEMY_DATABASE_POSTGRE_SQL_URL:
+    engine = create_engine(SQLALCHEMY_DATABASE_POSTGRE_SQL_URL)
+else:
+    engine = create_engine(
+        SQLALCHEMY_DATABASE_SQL_LITE_URL,
+        connect_args={"check_same_thread": False}
+    )
 
 @event.listens_for(Engine, "connect")
 def set_sqlite_pragma(dbapi_connection, connection_record):
