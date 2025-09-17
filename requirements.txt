@@ -1,0 +1,10 @@
+sqlalchemy
+fastapi
+fastapi[standard]
+uvicorn
+pyjwt
+bcrypt==3.2.2
+python-jose
+passlib[bcrypt]
+huggingface_hub
+psycopg2-binary
