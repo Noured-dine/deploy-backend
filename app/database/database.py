@@ -44,7 +44,7 @@ def get_db():
     finally:
         db.close()
 
-@asynccontextmanager
-async def lifespan(app):
-    Base.metadata.create_all(bind=engine)
-    yield  
+#@asynccontextmanager
+#async def lifespan(app):
+#    Base.metadata.create_all(bind=engine)
+#    yield  
