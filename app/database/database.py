@@ -6,7 +6,9 @@ import os
 from contextlib import asynccontextmanager
 from app.database.create_database import create_sqlite_database
 
-SQLALCHEMY_DATABASE_SQL_LITE_URL = 'sqlite:///../database.sqlite'
+SQL_LITE_DB_PATH = os.path.join("/home", "database.sqlite")
+
+SQLALCHEMY_DATABASE_SQL_LITE_URL = f"sqlite:///{SQL_LITE_DB_PATH}"
 
 POSTGRE_USERNAME = os.getenv("POSTGRE_USERNAME")
 POSTGRE_PASSWORD = os.getenv("POSTGRE_PASSWORD")
