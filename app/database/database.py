@@ -47,3 +47,4 @@ def get_db():
 @asynccontextmanager
 async def lifespan(app):
     Base.metadata.create_all(bind=engine)
+    yield  
