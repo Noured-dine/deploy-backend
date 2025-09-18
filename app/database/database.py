@@ -5,8 +5,9 @@ import sqlite3
 import os
 from contextlib import asynccontextmanager
 from app.database.create_database import create_sqlite_database
+import pathlib
 
-SQL_LITE_DB_PATH = os.path.join("/home", "database.sqlite")
+SQL_LITE_DB_PATH = os.path.join(pathlib.Path(__file__).parent.parent.parent, 'database.sqlite')
 
 SQLALCHEMY_DATABASE_SQL_LITE_URL = f"sqlite:///{SQL_LITE_DB_PATH}"
 

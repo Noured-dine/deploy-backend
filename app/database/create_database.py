@@ -3,7 +3,7 @@ import pathlib
 import os
 
 def create_sqlite_database():
-    DB_PATH = "/home/database.sqlite"
+    DB_PATH = os.path.join(pathlib.Path(__file__).parent.parent.parent, 'database.sqlite')
 
     if os.path.exists(DB_PATH):
         os.remove(DB_PATH)
