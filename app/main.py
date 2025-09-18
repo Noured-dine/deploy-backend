@@ -1,9 +1,9 @@
 from fastapi import FastAPI, Request
 from app.routers import file, job, user, auth
 from fastapi.middleware.cors import CORSMiddleware
-from app.database.database import lifespan
+#from app.database.database import lifespan
 
-app = FastAPI(title="Job Offers Management API", lifespan=lifespan)
+app = FastAPI(title="Job Offers Management API")
 
 app.include_router(auth.router)
 app.include_router(job.router)
