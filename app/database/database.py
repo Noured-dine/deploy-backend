@@ -4,6 +4,7 @@ from sqlalchemy.engine import Engine
 import sqlite3
 import os
 from contextlib import asynccontextmanager
+from app.database.create_database import create_sqlite_database
 
 SQLALCHEMY_DATABASE_SQL_LITE_URL = 'sqlite:///../database.sqlite'
 
@@ -46,5 +47,8 @@ def get_db():
 
 @asynccontextmanager
 async def lifespan(app):
-    Base.metadata.create_all(bind=engine)
+    if SQLALCHEMY_DATABASE_POSTGRE_SQL_URL:
+        Base.metadata.create_all(bind=engine)
+    else:
+        create_sqlite_database()
     yield  
