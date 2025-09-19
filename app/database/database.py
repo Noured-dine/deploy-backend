@@ -52,6 +52,4 @@ def get_db():
 async def lifespan(app):
     if SQLALCHEMY_DATABASE_POSTGRE_SQL_URL:
         Base.metadata.create_all(bind=engine)
-    else:
-        create_sqlite_database()
     yield  
