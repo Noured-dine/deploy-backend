@@ -5,10 +5,10 @@ import os
 def create_sqlite_database():
     SQL_LITE_DB_PATH = os.path.join("/home", "database.sqlite")
 
-    if os.path.exists(DB_PATH):
-        os.remove(DB_PATH)
+    if os.path.exists(SQL_LITE_DB_PATH):
+        os.remove(SQL_LITE_DB_PATH)
 
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(SQL_LITE_DB_PATH)
     cursor = conn.cursor()
 
     cursor.execute("""
