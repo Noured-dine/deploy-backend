@@ -9,14 +9,14 @@ def create_sqlite_database():
     cursor = conn.cursor()
 
     cursor.execute("""
-    CREATE TABLE roles (
+    CREATE TABLE IF NOT EXISTS roles (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         role_name TEXT UNIQUE NOT NULL
     )
     """)
 
     cursor.execute("""
-    CREATE TABLE users (
+    CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         first_name TEXT NOT NULL,
         last_name TEXT NOT NULL,
@@ -30,7 +30,7 @@ def create_sqlite_database():
     """)
 
     cursor.execute("""
-    CREATE TABLE revoked_tokens(
+    CREATE TABLE IF NOT EXISTS revoked_tokens(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         jti TEXT UNIQUE NOT NULL,
         revoked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -38,14 +38,14 @@ def create_sqlite_database():
     """)
 
     cursor.execute("""
-    CREATE TABLE villes (
+    CREATE TABLE IF NOT EXISTS villes (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nom_ville TEXT UNIQUE NOT NULL
     )
     """)
 
     cursor.execute("""
-    CREATE TABLE files (
+    CREATE TABLE IF NOT EXISTS files (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         file_path TEXT UNIQUE NOT NULL,
         file_name TEXT UNIQUE NOT NULL,
@@ -54,7 +54,7 @@ def create_sqlite_database():
     """)
 
     cursor.execute("""
-    CREATE TABLE entreprises (
+    CREATE TABLE IF NOT EXISTS entreprises (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nom_entreprise TEXT NOT NULL,
         logo_id INTEGER NOT NULL,
@@ -66,21 +66,21 @@ def create_sqlite_database():
     """)
 
     cursor.execute("""
-    CREATE TABLE secteurs_activite (
+    CREATE TABLE IF NOT EXISTS secteurs_activite (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nom_secteur TEXT UNIQUE NOT NULL
     )
     """)
 
     cursor.execute("""
-    CREATE TABLE fonctions (
+    CREATE TABLE IF NOT EXISTS fonctions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nom_fonction TEXT UNIQUE NOT NULL
     )
     """)
 
     cursor.execute("""
-    CREATE TABLE offres_emploi (
+    CREATE TABLE IF NOT EXISTS offres_emploi (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         user_id INTEGER NOT NULL,
         titre TEXT NOT NULL,
@@ -112,7 +112,7 @@ def create_sqlite_database():
     """)
 
     cursor.execute("""
-    CREATE TABLE competences (
+    CREATE TABLE IF NOT EXISTS competences (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nom_competence TEXT NOT NULL,
         niveau TEXT,
@@ -122,7 +122,7 @@ def create_sqlite_database():
     """)
 
     cursor.execute("""
-    CREATE TABLE candidatures (
+    CREATE TABLE IF NOT EXISTS candidatures (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         id_offre INTEGER NOT NULL,
         nom TEXT NOT NULL,
